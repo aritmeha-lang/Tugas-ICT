@@ -1,0 +1,181 @@
+/* Warna: seperti buku tulis bergaris di atas meja */
+:root {
+  --desk: #e7dfcf;
+  --paper: #fdfbf4;
+  --line: #cfe3f7;
+  --red: #f2a7a7;
+  --ink: #2b2b3a;
+  --coral: #f0705f;
+  --margin: 84px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px 16px;
+  background: var(--desk);
+  color: var(--ink);
+  font: 400 1.1rem / 32px Nunito, Arial, sans-serif;
+}
+
+/* Halaman buku: garis biru dan garis tepi merah */
+.sheet {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 40px 32px calc(var(--margin) + 28px);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(60, 45, 20, .25);
+  background:
+    linear-gradient(90deg, transparent calc(var(--margin) - 2px), var(--red) calc(var(--margin) - 2px), var(--red) var(--margin), transparent var(--margin)),
+    repeating-linear-gradient(var(--paper) 0 31px, var(--line) 31px 32px);
+}
+
+/* Lubang buku di sisi kiri */
+.sheet::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: radial-gradient(circle at 12px 22px, var(--desk) 9px, transparent 10px) 0 0 / 24px 52px repeat-y;
+}
+
+a { color: var(--ink); font-weight: 700; }
+a:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+p { margin: 0; }
+
+/* Judul tulisan tangan */
+h1, h2, .sapa, figcaption, .note b, footer {
+  font-family: Caveat, "Comic Sans MS", cursive;
+  font-weight: 700;
+}
+
+h1 { margin: 0; font-size: clamp(3.4rem, 9vw, 5.6rem); line-height: 1; }
+h1 span {
+  /* Garis stabilo kuning di belakang nama */
+  background: linear-gradient(transparent 52%, #fff08a 52%, #fff08a 92%, transparent 92%);
+  padding: 0 8px;
+}
+
+h2 {
+  display: inline-block;
+  margin: 0 0 16px;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  text-decoration: underline wavy var(--coral) 3px;
+  text-underline-offset: 7px;
+}
+
+section { margin-top: 40px; }
+
+/* Bagian atas */
+.intro { display: grid; grid-template-columns: 1fr 250px; gap: 40px; align-items: center; }
+.kelas { margin-top: 12px; font-weight: 700; }
+.sapa { margin-top: 12px; font-size: 1.9rem; line-height: 1.25; }
+
+/* Foto polaroid dengan selotip */
+.polaroid {
+  position: relative;
+  margin: 0;
+  padding: 12px 12px 8px;
+  background: #fff;
+  box-shadow: 3px 6px 14px rgba(0, 0, 0, .25);
+  transform: rotate(3deg);
+}
+.polaroid img { display: block; width: 100%; aspect-ratio: 1; background: #dfeaf5; }
+.polaroid figcaption { padding-top: 6px; text-align: center; font-size: 1.8rem; line-height: 1.3; }
+.polaroid::before, .tv::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 96px;
+  height: 28px;
+  margin-left: -48px;
+  background: rgba(255, 224, 120, .8);
+  transform: rotate(-4deg);
+}
+
+/* Prestasi: kertas catatan */
+.catatan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 8px; }
+.note {
+  position: relative;
+  padding: 26px 20px 20px;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, .18);
+  line-height: 1.5;
+}
+.note::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .3);
+}
+.note b { display: block; font-size: 2.2rem; line-height: 1.1; }
+.note p { margin-top: 4px; }
+.pink { background: #ffd6e0; transform: rotate(-2deg); }
+.mint { background: #d6f5e3; transform: rotate(1.5deg); }
+.sky  { background: #d6ecff; transform: rotate(-1deg); }
+
+/* Hobi dan menu berdampingan */
+.dua { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+
+.centang { margin: 0; padding: 0; list-style: none; }
+.centang li { display: flex; align-items: center; gap: 12px; }
+.centang li::before {
+  content: "✔";
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--coral);
+  font-size: .95rem;
+  line-height: 1;
+}
+
+/* Kartu menu dengan titik-titik penghubung */
+.menu {
+  padding: 8px 22px;
+  border: 3px double var(--ink);
+  background: #fff;
+}
+.menu p { display: flex; align-items: baseline; gap: 8px; }
+.menu i { flex: 1; border-bottom: 2px dotted #8a8aa0; }
+.menu span { color: #55556b; }
+
+/* Video YouTube dalam bingkai */
+.tv {
+  position: relative;
+  padding: 14px 14px 10px;
+  background: #fff;
+  box-shadow: 3px 6px 14px rgba(0, 0, 0, .25);
+  transform: rotate(-.8deg);
+}
+.layar { aspect-ratio: 16 / 9; background: var(--ink); }
+.layar iframe { display: block; width: 100%; height: 100%; border: 0; }
+.tv p { padding-top: 8px; }
+
+footer { margin-top: 40px; font-size: 1.6rem; text-align: center; }
+
+/* Tampilan layar kecil (HP) */
+@media (max-width: 760px) {
+  :root { --margin: 40px; }
+  body { padding: 0; }
+  .sheet { padding: 36px 20px 24px calc(var(--margin) + 16px); border-radius: 0; }
+  .sheet::before { display: none; }
+  .intro, .dua { grid-template-columns: 1fr; }
+  .polaroid { width: 220px; justify-self: center; }
+  .catatan { grid-template-columns: 1fr; }
+}

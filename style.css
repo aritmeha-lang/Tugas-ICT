@@ -1,0 +1,158 @@
+/* Warna yang dipakai di seluruh halaman */
+:root {
+  --navy: #20325a;
+  --cream: #fff6dd;
+  --yellow: #ffd23f;
+  --coral: #ff6b6b;
+  --teal: #2ec4b6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--navy);
+  font-family: Nunito, Arial, sans-serif;
+  line-height: 1.6;
+  /* Latar belakang titik-titik tipis */
+  background: radial-gradient(rgba(32, 50, 90, .14) 1.5px, transparent 1.5px) 0 0 / 24px 24px, var(--cream);
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 24px; }
+
+a { color: var(--navy); font-weight: 700; }
+a:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+/* Kartu bergaya stiker: garis tebal dan bayangan keras */
+.profil, .kartu {
+  border: 3px solid var(--navy);
+  border-radius: 24px;
+  box-shadow: 6px 6px 0 var(--shadow, var(--navy));
+}
+
+/* Bagian atas */
+.profil {
+  --shadow: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  background: var(--yellow);
+  box-shadow: 8px 8px 0 var(--navy);
+}
+
+.foto {
+  flex: none;
+  width: 180px;
+  height: 180px;
+  border: 5px solid var(--navy);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 5px 5px 0 var(--coral);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font: 800 clamp(2.4rem, 7vw, 3.6rem) / 1 "Baloo 2", Nunito, sans-serif;
+}
+
+.profil p { margin: 8px 0 0; font-size: 1.1rem; }
+
+.kelas {
+  display: inline-block;
+  padding: 2px 16px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--cream);
+  font-weight: 700;
+}
+
+/* Susunan kartu: dua kolom */
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.kartu { padding: 24px 28px 28px; background: #fff; }
+.prestasi, .video { grid-column: 1 / -1; }
+.prestasi { --shadow: var(--coral); --warna: var(--coral); }
+.hobi { --shadow: var(--teal); --warna: var(--teal); }
+.favorit { --shadow: var(--navy); --warna: var(--yellow); }
+.video { --shadow: var(--teal); --warna: var(--teal); }
+
+/* Judul kartu seperti label stiker */
+h2 {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 4px 18px;
+  border: 3px solid var(--navy);
+  border-radius: 999px;
+  background: var(--warna);
+  font: 800 1.3rem / 1.3 "Baloo 2", Nunito, sans-serif;
+}
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* Daftar prestasi: tahun di kiri */
+.prestasi li {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 2px dashed #c9d1e3;
+}
+.prestasi li:first-child { border-top: 0; }
+.prestasi b {
+  padding: 2px 0;
+  border: 2px solid var(--navy);
+  border-radius: 10px;
+  background: var(--yellow);
+  text-align: center;
+}
+
+/* Hobi berbentuk chip */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li {
+  padding: 4px 16px;
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  background: var(--cream);
+  font-weight: 700;
+}
+
+/* Makanan dan minuman favorit */
+.favorit p { margin: 0 0 14px; font-size: 1.1rem; }
+.tag {
+  display: block;
+  width: max-content;
+  margin-bottom: 2px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+/* Video YouTube selalu berbentuk 16:9 */
+.player {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 3px solid var(--navy);
+  border-radius: 16px;
+  background: var(--navy);
+}
+.player iframe { width: 100%; height: 100%; border: 0; }
+.catatan { margin: 14px 0 0; }
+
+footer { margin-top: 40px; text-align: center; font-weight: 700; }
+
+/* Tampilan layar kecil (HP) */
+@media (max-width: 720px) {
+  .profil { flex-direction: column; text-align: center; padding: 28px 20px; }
+  main { grid-template-columns: 1fr; }
+  .kartu { padding: 20px; }
+}
